@@ -2,8 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 const Header = (props) => {
+    const {name} = props.course
     return (
-        <h1>{props.course}</h1>
+        <h1>{name}</h1>
     )
 }
 
@@ -19,7 +20,7 @@ const Part = (props) => {
 }
 
 const Content = (props) => {
-    const {parts} = props
+    const {parts} = props.course
     console.log(parts);
     
     return (
@@ -31,36 +32,38 @@ const Content = (props) => {
 
 const Total = (props) => {
     let total = 0
-    props.parts.forEach(part => total += part.exercises)
+    const {parts} = props.course
+    parts.forEach(part => total += part.exercises)
     return (
         <p>Number of exercises {total}</p>
     )
 }
 
 const App = () => {
-    const course = 'Half Stack application development'
-
-    const parts = [
-        {
-          name: 'Fundamentals of React',
-          exercises: 10
-        },
-        {
-          name: 'Using props to pass data',
-          exercises: 7
-        },
-        {
-          name: 'State of a component',
-          exercises: 14
-        }
-      ]
+    const course = {
+        name: 'Half Stack application development',
+        parts: [
+          {
+            name: 'Fundamentals of React',
+            exercises: 10
+          },
+          {
+            name: 'Using props to pass data',
+            exercises: 7
+          },
+          {
+            name: 'State of a component',
+            exercises: 14
+          }
+        ]
+      }
     
 
     return (
         <>
             <Header course={course} />
-            <Content parts={parts} />
-            <Total parts={parts} />
+            <Content course={course} />
+            <Total course={course} />
         </>
     )
 }
