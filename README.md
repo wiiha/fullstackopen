@@ -1,6 +1,6 @@
 # fullstackopen
 
-This is the repo for the course fullstackopen.
+This is the repo for hand in of the Exercises in the course fullstackopen.
 
 Course page: [https://fullstackopen.com/en](https://fullstackopen.com/en)
 
