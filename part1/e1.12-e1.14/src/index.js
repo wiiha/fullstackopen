@@ -8,8 +8,6 @@ const App = (props) => {
 
     const newAnecdote = () => {
         const select = Math.floor(Math.random() * anecdotes.length)
-        console.log(select);
-        
         setSelected(select)
     }
 
