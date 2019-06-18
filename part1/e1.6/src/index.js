@@ -21,6 +21,9 @@ const App = () => {
     <Display text="Good" data={good}/>
     <Display text="Neutral" data={neutral}/>
     <Display text="Bad" data={bad}/>
+    <Display text="All" data={good+neutral+bad}/>
+    <Display text="Average" data={(1*good+0*neutral+(-1)*bad)*(1/(good+neutral+bad))}/>
+    <Display text="Good" data={(good*(1/(good+neutral+bad))*100)+" %"}/>
     </div>
   )
 }
