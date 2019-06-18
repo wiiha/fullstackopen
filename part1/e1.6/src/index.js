@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
 const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>
-const Display = ({ text, data }) => <p>{text}: {data}</p>
+const Statistic = ({ text, data }) => <p>{text}: {data}</p>
 
 const Statistics = ({ good, neutral, bad }) => {
   const all = good + neutral + bad
@@ -22,12 +22,12 @@ const Statistics = ({ good, neutral, bad }) => {
   return (
     <div>
       <h2>Statistics</h2>
-      <Display text="Good" data={good} />
-      <Display text="Neutral" data={neutral} />
-      <Display text="Bad" data={bad} />
-      <Display text="All" data={all} />
-      <Display text="Average" data={average} />
-      <Display text="Good" data={100 * positive + " %"} />
+      <Statistic text="Good" data={good} />
+      <Statistic text="Neutral" data={neutral} />
+      <Statistic text="Bad" data={bad} />
+      <Statistic text="All" data={all} />
+      <Statistic text="Average" data={average} />
+      <Statistic text="Good" data={100 * positive + " %"} />
     </div>
   )
 
