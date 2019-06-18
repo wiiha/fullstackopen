@@ -5,16 +5,27 @@ const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>
 
 const App = (props) => {
     const [selected, setSelected] = useState(0)
+    const numOfAnecdotes = anecdotes.length
+    const [votes, setVotes] = useState(Array.apply(null, new Array(numOfAnecdotes)).map(Number.prototype.valueOf, 0))
 
     const newAnecdote = () => {
         const select = Math.floor(Math.random() * anecdotes.length)
         setSelected(select)
     }
 
+    const vote = () => {
+        const newVotes = [ ...votes ]
+        newVotes[selected] += 1
+        setVotes(newVotes)
+    }
+
     return (
         <div>
             {props.anecdotes[selected]}
+            <br/>
+            {"has " + votes[selected] + " votes"}
             <br />
+            <Button onClick={() => vote()} text="Vote" />
             <Button onClick={() => newAnecdote()} text="Next anecdote" />
         </div>
     )
