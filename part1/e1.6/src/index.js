@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
 const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>
-const Statistic = ({ text, data }) => <p>{text}: {data}</p>
+const Statistic = ({ text, data }) => (
+  <tr>
+    <td>{text}</td><td>{data}</td>
+  </tr>
+)
 
 const Statistics = ({ good, neutral, bad }) => {
   const all = good + neutral + bad
@@ -10,7 +14,7 @@ const Statistics = ({ good, neutral, bad }) => {
   const average = (score / all)
   const positive = (good / all)
 
-  if (all === 0) {
+  if (all === 0) { //Checks so there actually is some feedback
     return (
       <div>
         <h2>Statistics</h2>
@@ -22,12 +26,16 @@ const Statistics = ({ good, neutral, bad }) => {
   return (
     <div>
       <h2>Statistics</h2>
-      <Statistic text="Good" data={good} />
-      <Statistic text="Neutral" data={neutral} />
-      <Statistic text="Bad" data={bad} />
-      <Statistic text="All" data={all} />
-      <Statistic text="Average" data={average} />
-      <Statistic text="Good" data={100 * positive + " %"} />
+      <table>
+        <tbody>
+          <Statistic text="Good" data={good} />
+          <Statistic text="Neutral" data={neutral} />
+          <Statistic text="Bad" data={bad} />
+          <Statistic text="All" data={all} />
+          <Statistic text="Average" data={average} />
+          <Statistic text="Good" data={100 * positive + " %"} />
+        </tbody>
+      </table>
     </div>
   )
 
