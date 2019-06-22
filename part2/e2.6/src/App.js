@@ -1,22 +1,29 @@
 import React, { useState } from 'react'
 
 const App = () => {
-  const [ persons, setPersons] = useState([
+  const [persons, setPersons] = useState([
     { name: 'Arto Hellas' }
-  ]) 
-  const [ newName, setNewName ] = useState('')
+  ])
+  const [newName, setNewName] = useState('')
 
   const contactRows = () => persons.map(person => <p key={person.name}>{person.name}</p>)
 
   const handleNameChange = (event) => setNewName(event.target.value)
 
-  const addPerson = (event) =>{
-      event.preventDefault()
+  const addPerson = (event) => {
+    event.preventDefault()
+    const duplicate = persons.some((person) => person.name === newName)
+    if (duplicate) {
+      alert(`${newName} is already added to the phonebook.`)
+
+    } else {
       const personObj = {
-          name: newName,
+        name: newName,
       }
       setPersons(persons.concat(personObj))
-      
+    }
+    setNewName('')
+
   }
 
   return (
